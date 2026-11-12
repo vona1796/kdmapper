@@ -4,13 +4,13 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v1.1
+      uses: microsoft/setup-msbuild@v2
     - name: Build app
       run: msbuild kdmapper.sln /p:Configuration=Release /p:Platform=x64
     - name: Upload EXE
       uses: actions/upload-artifact@v4
       with:
         name: kdmapper-compiled
-        path: x64/Release/kdmapper.exe
+        path: x64/Release/kdmapper_Release.exe
