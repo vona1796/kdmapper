@@ -10,7 +10,7 @@ jobs:
     - name: Build app
       run: msbuild kdmapper.sln /p:Configuration=Release /p:Platform=x64
     - name: Upload EXE
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: kdmapper-compiled
         path: x64/Release/kdmapper.exe
