@@ -1,0 +1,16 @@
+name: Build kdmapper
+on: [workflow_dispatch]
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.1
+    - name: Build app
+      run: msbuild kdmapper.sln /p:Configuration=Release /p:Platform=x64
+    - name: Upload EXE
+      uses: actions/upload-artifact@v3
+      with:
+        name: kdmapper-compiled
+        path: x64/Release/kdmapper.exe
